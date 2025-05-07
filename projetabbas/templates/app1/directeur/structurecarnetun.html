@@ -1,0 +1,309 @@
+<!DOCTYPE html >
+<html dir="rtl",lang="en">
+  
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document  </title>
+
+</head>
+
+  <style>
+    .editLink a {
+    color: #FFFFFF;
+    text-decoration: none;
+    }  
+    .editLi a {
+      color: #FFFFFF;
+      text-decoration: none;
+      }  
+  
+ .no{
+    display:none;
+  }
+  
+
+
+  </style>
+   
+
+   <script>
+    var zx =document.getElementById("aa");
+  </script>
+
+
+
+<script type="text/javascript">
+  function preventBack() {
+      window.history.forward(); 
+  }
+  
+  setTimeout("preventBack()", 0);
+  
+  window.onunload = function () { null };
+</script>
+
+<body>
+  
+  {% extends 'base01.html' %}
+
+{% block work2 %}
+<br>
+  
+<table border="1" style="background-color: white";>
+  <td>ID</td>
+  <td>العام</td>
+  <td>اسم الشهر/الفصل</td>
+  <td>كود</td>
+  <td>عدد الاشهر للمعدل</td>
+  <td>كود1</td>
+  <td>كود2</td>
+  <td>كود 3</td>
+  <td> كود 4</td>
+  <td>كود5</td>
+  <td>كود6</td>
+  <td>كود 7</td>
+  <td> كود8</td>
+  <td>كود9 </td>
+  <td>كوذ10</td>
+  <td>كود11</td>
+  <td>كود 12</td>
+
+  <form method="POST"  > 
+    {% csrf_token  %}
+  
+  <tr>
+    
+    <td align="center"></td>
+    <td>
+    <select type="text" name="an1"> 
+      <option value=""> </option> 
+       {% for rec101 in annn %}
+   <option value={{rec101.anne}}>{{rec101.anne}} </option> 
+  {% endfor %}
+  </select></td>
+    
+    <td align="center"><input type="text"   name="mois11"    ></td>
+    <td align="center"><select type="number" name="c" > 
+      
+      <option value=0>0 </option> <option value=1>1 </option> <option value=2>2 </option> <option value=3>3 </option> <option value=4>4 </option> 
+      <option value=5>5 </option> <option value=6>6 </option> <option value=7>7 </option> <option value=8>8 </option> 
+      <option value=9>9 </option> <option value=10>10 </option> <option value=11>11 </option> <option value=12>12 </option> 
+    
+      <option value=13>13 </option> <option value=14>14 </option> <option value=15>15 </option> 
+      <option value=16>16 </option> <option value=17>17 </option> <option value=18>18 </option> 
+      
+    </select></td>
+    <td  align="center"><select type="number" name="ny"> 
+        <option value=0>0 </option> <option value=1>1 </option> <option value=2>2 </option> <option value=3>3 </option> <option value=4>4 </option> 
+        <option value=5>5 </option> <option value=6>6 </option> <option value=7>7 </option> <option value=8>8 </option> 
+        <option value=9>9 </option> <option value=10>10 </option> <option value=11>11 </option> <option value=12>12 </option> 
+    
+        <option value=13>13 </option> <option value=14>14 </option> <option value=15>15 </option> 
+        <option value=16>16 </option> <option value=17>17 </option> <option value=18>18 </option> 
+        
+        <`/select></td>
+  
+          
+      
+      
+      <td  align="center"><select type="number" name="c1" > 
+      
+        <option value=0>0 </option> <option value=1>1 </option> <option value=2>2 </option> <option value=3>3 </option> <option value=4>4 </option> 
+        <option value=5>5 </option> <option value=6>6 </option> <option value=7>7 </option> <option value=8>8 </option> 
+        <option value=9>9 </option> <option value=10>10 </option> <option value=11>11 </option> <option value=12>12 </option> 
+     
+        <option value=13>13 </option> <option value=14>14 </option> <option value=15>15 </option> 
+        <option value=16>16 </option> <option value=17>17 </option> <option value=18>18 </option> 
+        
+     
+        <`/select></td>
+  
+      <td  align="center"><select type="number" name="c2" >
+
+        <option value=0>0 </option> <option value=1>1 </option> <option value=2>2 </option> <option value=3>3 </option> <option value=4>4 </option> 
+        <option value=5>5 </option> <option value=6>6 </option> <option value=7>7 </option> <option value=8>8 </option> 
+        <option value=9>9 </option> <option value=10>10 </option> <option value=11>11 </option> <option value=12>12 </option> 
+      
+      
+        <option value=13>13 </option> <option value=14>14 </option> <option value=15>15 </option> 
+        <option value=16>16 </option> <option value=17>17 </option> <option value=18>18 </option> 
+        
+      </select></td>
+  
+        <td  align="center"><select type="number" name="c3">
+
+          <option value=0>0 </option> <option value=1>1 </option> <option value=2>2 </option> <option value=3>3 </option> <option value=4>4 </option> 
+          <option value=5>5 </option> <option value=6>6 </option> <option value=7>7 </option> <option value=8>8 </option> 
+          <option value=9>9 </option> <option value=10>10 </option> <option value=11>11 </option> <option value=12>12 </option>
+        
+        
+      <option value=13>13 </option> <option value=14>14 </option> <option value=15>15 </option> 
+      <option value=16>16 </option> <option value=17>17 </option> <option value=18>18 </option> 
+      
+        
+        </select></td>
+    
+  
+          <td  align="center"><select type="number" name="c4" > 
+  
+            <option value=0>0 </option> <option value=1>1 </option> <option value=2>2 </option> <option value=3>3 </option> <option value=4>4 </option> 
+            <option value=5>5 </option> <option value=6>6 </option> <option value=7>7 </option> <option value=8>8 </option> 
+            <option value=9>9 </option> <option value=10>10 </option> <option value=11>11 </option> <option value=12>12 </option> 
+          
+          
+      <option value=13>13 </option> <option value=14>14 </option> <option value=15>15 </option> 
+      <option value=16>16 </option> <option value=17>17 </option> <option value=18>18 </option> 
+      
+          
+          </select></td>
+            <td  align="center"><select type="number" name="c5" > 
+  
+              <option value=0>0 </option> <option value=1>1 </option> <option value=2>2 </option> <option value=3>3 </option> <option value=4>4 </option> 
+              <option value=5>5 </option> <option value=6>6 </option> <option value=7>7 </option> <option value=8>8 </option> 
+              <option value=9>9 </option> <option value=10>10 </option> <option value=11>11 </option> <option value=12>12 </option> 
+            
+            
+      <option value=13>13 </option> <option value=14>14 </option> <option value=15>15 </option> 
+      <option value=16>16 </option> <option value=17>17 </option> <option value=18>18 </option> 
+      
+            
+            </select></td>
+        
+  
+
+
+              <td  align="center"><select type="number" name="c6" > 
+
+                <option value=0>0 </option> <option value=1>1 </option> <option value=2>2 </option> <option value=3>3 </option> <option value=4>4 </option> 
+                <option value=5>5 </option> <option value=6>6 </option> <option value=7>7 </option> <option value=8>8 </option> 
+                <option value=9>9 </option> <option value=10>10 </option> <option value=11>11 </option> <option value=12>12 </option>
+              
+              
+      <option value=13>13 </option> <option value=14>14 </option> <option value=15>15 </option> 
+      <option value=16>16 </option> <option value=17>17 </option> <option value=18>18 </option> 
+      
+              
+              
+              </select></td>
+          
+
+                <td  align="center"><select type="number" name="c7" > 
+
+                  <option value=0>0 </option> <option value=1>1 </option> <option value=2>2 </option> <option value=3>3 </option> <option value=4>4 </option> 
+                  <option value=5>5 </option> <option value=6>6 </option> <option value=7>7 </option> <option value=8>8 </option> 
+                  <option value=9>9 </option> <option value=10>10 </option> <option value=11>11 </option> <option value=12>12 </option> 
+                
+                
+      <option value=13>13 </option> <option value=14>14 </option> <option value=15>15 </option> 
+      <option value=16>16 </option> <option value=17>17 </option> <option value=18>18 </option> 
+      
+                
+                </select></td>
+            
+
+                  <td  align="center"><select type="number" name="c8" >
+ 
+                    <option value=0>0 </option> <option value=1>1 </option> <option value=2>2 </option> <option value=3>3 </option> <option value=4>4 </option> 
+                    <option value=5>5 </option> <option value=6>6 </option> <option value=7>7 </option> <option value=8>8 </option> 
+                    <option value=9>9 </option> <option value=10>10 </option> <option value=11>11 </option> <option value=12>12 </option> 
+                  
+                  
+                  
+      <option value=13>13 </option> <option value=14>14 </option> <option value=15>15 </option> 
+      <option value=16>16 </option> <option value=17>17 </option> <option value=18>18 </option> 
+      
+                  </select></td>
+              
+
+                    <td  align="center"><select type="number" name="c9" >
+ 
+                      <option value=0>0 </option> <option value=1>1 </option> <option value=2>2 </option> <option value=3>3 </option> <option value=4>4 </option> 
+                      <option value=5>5 </option> <option value=6>6 </option> <option value=7>7 </option> <option value=8>8 </option> 
+                      <option value=9>9 </option> <option value=10>10 </option> <option value=11>11 </option> <option value=12>12 </option> 
+                    
+                    
+                    
+      <option value=13>13 </option> <option value=14>14 </option> <option value=15>15 </option> 
+      <option value=16>16 </option> <option value=17>17 </option> <option value=18>18 </option> 
+      
+                    </select></td>
+                
+
+                      <td  align="center"><select type="number" name="c10" >
+ 
+                        <option value=0>0 </option> <option value=1>1 </option> <option value=2>2 </option> <option value=3>3 </option> <option value=4>4 </option> 
+                        <option value=5>5 </option> <option value=6>6 </option> <option value=7>7 </option> <option value=8>8 </option> 
+                        <option value=9>9 </option> <option value=10>10 </option> <option value=11>11 </option> <option value=12>12 </option> 
+                      
+      <option value=13>13 </option> <option value=14>14 </option> <option value=15>15 </option> 
+      <option value=16>16 </option> <option value=17>17 </option> <option value=18>18 </option> 
+      
+                      
+                      
+                      
+                      </select></td>
+                        <td  align="center"><select type="number" name="c11">
+ 
+                          <option value=0>0 </option> <option value=1>1 </option> <option value=2>2 </option> <option value=3>3 </option> <option value=4>4 </option> 
+                          <option value=5>5 </option> <option value=6>6 </option> <option value=7>7 </option> <option value=8>8 </option> 
+                          <option value=9>9 </option> <option value=10>10 </option> <option value=11>11 </option> <option value=12>12 </option> 
+                        
+                        
+      <option value=13>13 </option> <option value=14>14 </option> <option value=15>15 </option> 
+      <option value=16>16 </option> <option value=17>17 </option> <option value=18>18 </option> 
+      
+                        
+                        </select></td>
+                          <td  align="center"><select type="number" name="c12" >
+
+                            <option value=0>0 </option> <option value=1>1 </option> <option value=2>2 </option> <option value=3>3 </option> <option value=4>4 </option> 
+                            <option value=5>5 </option> <option value=6>6 </option> <option value=7>7 </option> <option value=8>8 </option> 
+                            <option value=9>9 </option> <option value=10>10 </option> <option value=11>11 </option> <option value=12>12 </option> 
+                          
+      <option value=13>13 </option> <option value=14>14 </option> <option value=15>15 </option> 
+      <option value=16>16 </option> <option value=17>17 </option> <option value=18>18 </option> 
+      
+                          
+                          
+                          </select></td>
+                      
+  
+  
+  
+  
+  
+  
+  
+  
+      </td>
+
+<td><input type="submit" value="حفظ">
+</td></form>
+</table>
+
+<br>
+<br>
+<p>  </p>
+<div class='editLink'>
+
+  
+
+<p>
+  p>
+<br>
+
+<br>
+
+<td><a href="/app1/direct" style="background-color:lightskyblue;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">خروج الى اللائحة الاساسية</a></td>
+<button  onclick="window.print()"> طباعة  pdf </button>
+  
+</div>
+</form>
+{% endblock work2 %}
+
+
+
+</body>
+</html>  
+  

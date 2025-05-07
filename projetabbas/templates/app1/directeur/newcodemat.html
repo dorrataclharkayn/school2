@@ -1,0 +1,80 @@
+<html dir="rtl",lang="en">
+  
+  <style>
+    .editLink a {
+    color: #FFFFFF;
+    text-decoration: none;
+    }  
+  </style>
+   
+<script type="text/javascript">
+  function preventBack() {
+      window.history.forward(); 
+  }
+  
+  setTimeout("preventBack()", 0);
+  
+  window.onunload = function () { null };
+</script>
+
+</head>
+
+<body>
+
+{% extends 'base01.html' %}
+{% block work2 %}
+
+<form   method="POST">
+  {% csrf_token  %}
+ 
+ 
+  <table border="4">
+    <td><p> :العام</p>
+      <select type="text" name="anne2031"> 
+        <option value=""></option>
+         {% for anx in anrec %}
+           <option value={{anx.anne}}>{{anx.anne}}</option>
+          {% endfor %} </select>
+      </td>
+  
+  
+    
+    <td>
+      <p>الشعبة</p>
+      <select name="section08">
+        
+        <option value="A">A</option>
+       <option value="B">B</option>
+       <option value="C">C</option>
+       <option value="D">D</option>
+       <option value="E">E</option> </td>
+      <td>
+      
+    
+    
+     
+  </table> 
+ <br>
+ <br>
+ <br>
+
+<p>  <input type="submit" value="أنشىء الكودات"  ></p>
+
+  <br>
+  </form>
+  <br>
+  <br>
+  <br>
+  <div class='editLink'>
+
+  
+  <br>
+<br>
+
+<td><a href="/app1/direct" style="background-color: blue;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">خروج الى اللائحة الاساسية</a></td>
+  </div>
+{% endblock work2 %}
+
+
+</body>
+</html>

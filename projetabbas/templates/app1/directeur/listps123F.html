@@ -1,0 +1,187 @@
+<!DOCTYPE html >
+<html dir="rtl",lang="en">
+  
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document  </title>
+
+  <style>
+    .editLink a {
+    color: #FFFFFF;
+    text-decoration: none;
+    }  
+    .editLi a {
+      color: #FFFFFF;
+      text-decoration: none;
+      }  
+  
+  </style>
+   
+<script type="text/javascript">
+  function preventBack() {
+      window.history.forward(); 
+  }
+  
+  setTimeout("preventBack()", 0);
+  
+  window.onunload = function () { null };
+</script>
+
+<script>
+  function gotto(){
+   var element = document.getElementById("message");
+  element.scrollIntoView();
+  }
+  </script>
+  
+</head>
+
+<body>
+  
+  {% extends 'base01.html' %}
+
+{% block work2 %}
+<form method="POST">
+  {% csrf_token  %}
+ 
+  <table border="1">
+  <td style="background-color:yellow";><label> رمـــز المادة الفرنسية<input type="text" name="nommat" value={{nm}}></label></td>t>
+  <td style="background-color:yellow";><label> البحث بجزء من اسم التلميد<input type="text" name="ne" value= {{nee}}></label></td>t>
+  <td style="background-color:yellow";><label> البحث بجزء من اسم الشهرة<input type="text" name="nf" value={{nff}}></label></td>t>
+   <tr>
+    <td style="background-color:yellow";> <label> العام الدراسي </label>
+      <select type="text" name="anne2032"> 
+        <option value={{a}}>{{a}} </option> 
+       {% for rec101 in anrec %}
+         <option value={{rec101.anne}}>{{rec101.anne}} </option> 
+       {% endfor %}
+      </select> </td>
+      <td style="background-color:yellow";> <label> الصف   > <label>>    
+        <select name="classe2030" >
+          <option value={{c}}>{{c}}</option> 
+          <option value="ps1">ps1</option>
+          <option value="ps2">ps2</option>
+          <option value="ps3">ps3</option>
+        </select> </td>
+  
+     <td style="background-color:yellow";>الشعبة <select name="section2030" >
+      <option value={{s}}>{{s}}</option>
+          <option value="A">A</option>
+          <option value="B">B</option>
+          <option value="C">C</option>
+          <option value="D">D</option>
+          <option value="E">E</option> </select></td>
+     
+  
+  
+  
+  
+  
+  
+  
+  
+      <td style="background-color:green";><input type="submit" value="ابحث"></td>
+       <tr>
+        <td><a href="/app1/maitre1" style="background-color: rgb(210, 210, 228);font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">خروج الى اللائحة الاساسية</a></td>
+
+     
+    </table>  
+    </form>
+  <br>
+  
+
+  
+<table border="1" style="background-color: white";>
+    
+  <td style="background-color:#d08eb7 ">الاسم</td>
+  <td style="background-color:#d08eb7 ";>الاب</td>
+  <td style="background-color:#d08eb7 ";>الشهرة</td>
+  <td style="background-color:#d08eb7 ";>الصف</td>
+  <td style="background-color:#d08eb7 ";>الشعبة</td>
+  <td style="background-color:#d08eb7 ";>المجموعة</td>
+  <td style="background-color:#d08eb7 ";>المجال</td>
+  <td style="background-color:#d08eb7 ";>الهدف</td>
+  <td style="background-color:#d08eb7 ";></td>
+
+  <td style="background-color:#d08eb7 ";>فصل1</td>
+  <td style="background-color:#d08eb7 ";> فصل2 </td>
+  <td style="background-color: #d08eb7 ";>فصل3</td>
+  <td style="background-color: #d08eb7 ";>@@</td>
+  
+
+  {% for rec1 in rec %}
+  <form  method="POST" action ="/app1/Adirectcarnetps01F/Asavenoteps01F/{{rec1.id}}/{{rec1.anne1}}/{{rec1.nom1}}/{{rec1.famille1}}/{{rec1.classe1}}/{{rec1.section1}}"> 
+    {% csrf_token  %}
+  <tr>
+   
+    <td>{{rec1.nom1}}
+      <td>{{rec1.pere1}}</td>
+    <td>{{rec1.famille1}}</td>
+    <td>{{rec1.classe1}}</td>
+    <td>{{rec1.section1}}</td>
+    <td style="background-color:yellow ;">
+      <a href="/app1/Adirectcarnetps01Afilsf/Asavenoteps01Afilsf/{{rec1.id}}/{{rec1.anne1}}/{{rec1.nom1}}/{{rec1.famille1}}/{{rec1.classe1}}/{{rec1.section1}}" style="background-color:#25fcca ;">جلب الكل</a>
+      </td>
+          <td>{{rec1.champ}}</td>
+    <td>{{rec1.souschamp}}</td>
+
+
+    
+    {% if rec1.id == ii %}
+      
+        <td id="message" style="background-color: green;">&nbsp</td>
+      
+    {% endif %}
+    {% if rec1.id != ii %}
+      
+        <td id="message111" style="background-color:bisque;">&nbsp</td>
+      
+    {% endif %}
+
+    <td style="background-color:#25dffc ";> <select  name="sem1" onchange="this.form.submit();">
+      <option value={{rec1.sem1}}>{{rec1.sem1}}</option>
+      <option value="A">A</option>
+      <option value="B">B</option>
+      <option value="C">C</option><option value=""></option></select></td>
+    
+      <td style="background-color:#25dffc ";> <select  name="sem2" onchange="this.form.submit();" >
+        <option value={{rec1.sem2}}>{{rec1.sem2}}</option>
+        <option value="A">A</option>
+        <option value="B">B</option>
+        <option value="C">C</option><option value=""></option></select></td>
+        <td style="background-color:#25dffc ";> <select  name="sem3" onchange="this.form.submit();" >
+          <option value={{rec1.sem3}}>{{rec1.sem3}}</option>
+          <option value="A">A</option>
+          <option value="B">B</option>
+          <option value="C">C</option><option value=""></option></select></td>
+
+          <td style="background-color:green";><input type="submit" value="احفظ"></td>
+
+</form>
+{% endfor %}
+
+</table>
+
+<br>
+<br>
+<p>  </p>
+<div class='editLink'>
+
+
+<p>
+  
+</p>
+<br>
+<br>
+
+<td><a href="/app1/maitre1" style="background-color: blue;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">خروج الى اللائحة الاساسية</a></td>
+</div>
+<body onload="gotto();"></body>
+{% endblock work2 %}
+
+
+
+</body>
+</html>  
+  

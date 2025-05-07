@@ -1,0 +1,129 @@
+<!DOCTYPE html >
+<html dir="rtl",lang="en">
+  
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document  </title>
+
+</head>
+
+  <style>
+    .editLink a {
+    color: #FFFFFF;
+    text-decoration: none;
+    }  
+    .editLi a {
+      color: #FFFFFF;
+      text-decoration: none;
+      }  
+  
+ .no{
+    display:none;
+  }
+  
+
+
+  </style>
+   
+<script type="text/javascript">
+  function preventBack() {
+      window.history.forward(); 
+  }
+  
+  setTimeout("preventBack()", 0);
+  
+  window.onunload = function () { null };
+</script>
+
+<body>
+  
+  {% extends 'base01.html' %}
+
+{% block work2 %}
+<form method="POST">
+  {% csrf_token  %}
+ 
+     <br>
+     
+    <br>
+  <p>    البحث باسم و لاظهار كل الطلاب ؟</p>
+  <p><input type="text" name="nom1" value="" ></p>
+  
+  <input type="submit" value="ابحث">
+  <br>
+  
+<br>
+<form method="POST">
+  {% csrf_token  %}
+  
+<table border="1" style="background-color: white";>
+  <td>الكود</td>
+  <td>الاسم</td>
+  <td>الاب</td>
+  <td>الشهرة</td>
+  <td>الام</td>
+  <td>البلدة</td>
+  <td>تلفون</td>
+  <td>تاريــــخ الولادة</td>
+  <td> محل الولادة </td>
+  <td>رقم السجل </td>
+  <td>الجنس</td>
+  <td>كود الأب </td>
+  <td> 1972 لحجب العلامة</td>
+  <td>رقم 2 </td>
+  <td>مسجل\ترك</td>
+  
+  {% for rec1 in rec %}
+  <tr>
+    
+    <td><a href="update1/{{rec1.code}}">{{rec1.code}}</a></td>
+  
+    <td align="center">{{rec1.nom}}</td>
+    <td align="center">{{rec1.pere}}</td>
+    <td align="center">{{rec1.famille}}</td>
+    <td align="center">{{rec1.mere}}</td>
+    <td align="center">{{rec1.city}}</td>
+    <td align="center">{{rec1.tel}}</td>
+    <td style="width: 80px";>{{rec1.dat|date:"Y-m-d"}}</td>
+    <td align="center">{{rec1.lieu}}</td>
+    <td align="center">{{rec1.segel}}</td>
+    <td align="center">{{rec1.rem1}}</td>
+    <td align="center">{{rec1.rem2}}</td>
+    {% if rec1.num1 == 1972 %}
+    <td style="background-color: rgb(255, 0, 30)";>علامة محجوبة</td> {% endif %}
+    {% if rec1.num1 != 1972 %}
+    <td>علامة ظاهرة</td> {% endif %}
+    <td>{{rec1.num2}}</td>
+    <td>{{rec1.quit}}</td>
+    <td><a href="hidecar/{{rec1.code}}" style="background-color: yellow;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">حجب علامة-الاهل</a></td>
+    <td><a href="afficar/{{rec1.code}}" style="background-color: yellow;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">اظهار علامة- للاهل</a></td>
+    <td><a href="del/{{rec1.code}}" style="background-color: rgb(255, 0, 30);font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">حذف الطالب</a></td>  
+  {% endfor %}  
+</table>
+
+<br>
+<br>
+<p>  </p>
+<div class='editLink'>
+
+  
+
+<p>
+  <a href="add" style="background-color: brown;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">طالب جديد </a>
+</p>
+<br>
+<br>
+
+<td><a href="/app1/direct" style="background-color: blue;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">خروج الى اللائحة الاساسية</a></td>
+<button  onclick="window.print()"> طباعة  pdf </button>
+  
+</div>
+</form>
+{% endblock work2 %}
+
+
+
+</body>
+</html>  
+  

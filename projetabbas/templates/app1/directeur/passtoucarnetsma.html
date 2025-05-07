@@ -1,0 +1,144 @@
+<!DOCTYPE html >
+<html dir="rtl",lang="en">
+ 
+  
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> السماح او عدم سماح اظهار علامات كل الصفوف </title>
+
+  <style>
+
+  </style>
+   
+<script type="text/javascript">
+  function preventBack() {
+      window.history.forward(); 
+  }
+  
+  setTimeout("preventBack()", 0);
+  
+  window.onunload = function () { null };
+</script>
+
+</head>
+
+<body>
+
+
+
+  
+{% extends 'base01.html' %}
+
+{% block work2 %}
+
+<form method="POST">
+  {% csrf_token  %}
+  <table border="1" style="background-color: lightgreen;">
+  <td>    العام الدراسي 
+    <select type="text" name="anne08ms" onchange="this.form.submit()"> 
+       <option value={{a}} >{{a}}</option>
+       {% for anx in anrec %}
+         <option value={{anx.anne}}>{{anx.anne}}</option>
+        {% endfor %} </select>
+    </td>
+ <td> قفل او فتح شهر لصف محدد امام المعلمين</td>
+  </table>
+  <table  border="1" style="background-color:yellow";>
+    <td> الصف المراد اظهار علامته</td>
+    
+    
+      
+    <td>الصف
+   <select name="classe08ms">
+   <option value={{c}} >{{c}}</option>
+   <option value="ps1">ps1</option>
+   <option value="ps2">ps2</option>
+   <option value="ps3">ps3</option>
+   <option value="eb1">eb1</option>
+   <option value="eb2">eb2</option>
+   <option value="eb3">eb3</option>
+   <option value="eb4">eb4</option>
+   <option value="eb5">eb5</option>
+   <option value="eb6">eb6</option>
+   <option value="eb7">eb7</option>
+   <option value="eb8">eb8</option>
+   <option value="eb9">eb9</option>
+   <option value="sec-sc">seconde-sc</option>
+   <option value="bacc1-sc">bacc1-sc</option>
+   <option value="bacc1-l">bacc1-l</option>
+   <option value="sg">sg</option>
+   <option value="sv">sv</option>
+   <option value="se">se</option>
+   <option value="lh">LH</option>
+   <option value="ALL">ALL</option>
+
+ </select> </td>
+ <td>
+الشعبة
+<select name="section08ms">
+ <option value={{s}} >{{s}}</option>
+ <option value="A">A</option>
+ <option value="B">B</option>
+ <option value="C">C</option>
+ <option value="D">D</option>
+ <option value="E">E</option> <option value="F">F</option><option value="G">E</option><option value="H">H</option><option value="I">I</option><option value="J">J</option> 
+ <option value="ALL">ALL</option></select> </td>
+ <td>الشهر:<select  type="number" name="mois01" > <option value={{mss}}>{{mfirst}}</option>{% for ms08 in msss08 %}
+ <option value={{ms08.code}}>{{ms08.mois}}</option>{% endfor %}<option value=1900>ALL</option></select>
+</td>
+ 
+ 
+ 
+ <td>للمعلم
+  <select name="affms">
+    <option value="الحالة القديمة">"الحالة القديمة"</option>
+    <option value="حجب" >حجب علامة</option>
+    <option value="اظهار">اظهار علامة</option>
+    <option value=None>الحالة القديمة</option> </select>
+ </td>
+
+ <td>للأهل
+  <select name="affmsa">
+    <option value="الحالة القديمة" >"الحالة القديمة"</option>
+    <option value="حجب" >حجب علامة</option>
+    <option value="اظهار">اظهار علامة</option>
+    <option value=None>الحالة القديمة</option></select>
+ </td>
+
+  <td>
+  <input type="submit" value="اظهر/احجب"></td>
+
+ 
+
+</table>
+<br>
+<table border="1" style="background-color:lightcyan";><td>اسم الطالب</td><td>اسم الاب</td><td>الشهرة</td><td>الشهر</td><td>سماح للمعلم</td><td>سماح للاهل</td><tr>
+{% for i in jasmin %}
+<td>{{i.nom1}}</td><td>{{i.pere1}}</td><td>{{i.famille1}}</td><td>{{i.mois}}</td>
+{% if i.rem1 == "oui" %}<td style="background-color:red";>غير مسموح للمعلم</td>{% endif %}
+{% if i.rem1 == "non" %}<td style="background-color:greenyellow";> مسموح للمعلم</td>{% endif %}
+{% if i.rem2 == "oui" %}<td style="background-color:red";>غير مسموح للأهل</td>{% endif %}
+{% if i.rem2 == "non" %}<td style="background-color:greenyellow";> مسموح للأهل</td>{% endif %}
+
+<tr>
+
+{% endfor %}
+</table>
+</form>
+
+
+
+<br><br><br>
+<td><a href="/app1/direct"  style="background-color: brown;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">خروج الى اللائحة الاساسية</a></td>
+</div>  
+
+
+
+
+{% endblock work2 %}
+
+
+
+</body>
+</html>

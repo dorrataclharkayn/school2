@@ -1,0 +1,74 @@
+<html dir="rtl",lang="en">
+  
+  <style>
+    .editLink a {
+    color: #FFFFFF;
+    text-decoration: none;
+    }  
+  </style>
+   
+<script type="text/javascript">
+  function preventBack() {
+      window.history.forward(); 
+  }
+  
+  setTimeout("preventBack()", 0);
+  
+  window.onunload = function () { null };
+</script>
+
+</head>
+
+<body>
+
+{% extends 'base01.html' %}
+{% block work2 %}
+
+<form   method="POST">
+  {% csrf_token  %}
+  <br>
+ <br>
+
+  <table border="4">
+
+
+  <td><p>   :تحويل مواد الروضات الصفوف الثلاثة من العام</p>
+    <select type="text" name="anne2031"> 
+      <option value=""></option>
+       {% for anx in anrec %}
+         <option value={{anx.anne}}>{{anx.anne}}</option>
+        {% endfor %} </select>
+    </td>
+
+
+
+
+  <td><p>   : العام الدراسي المدكور   </p>
+    <select type="text" name="anne2033"> 
+      <option value=""></option>  
+      {% for anx in anrec %}
+         <option value={{anx.anne}}>{{anx.anne}}</option>
+        {% endfor %} </select>
+    </td>
+
+<td>
+<p>  <input type="submit" value="نسخ المواد"  ></p></td>
+
+  <br>
+  </form>
+  <br>
+  <br>
+  <br>
+  <div class='editLink'>
+
+  
+  <br>
+<br>
+
+<td><a href="/app1/direct" style="background-color: blue;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">خروج الى اللائحة الاساسية</a></td>
+  </div>
+{% endblock work2 %}
+
+
+</body>
+</html>

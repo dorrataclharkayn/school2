@@ -1,0 +1,84 @@
+<html dir="rtl",lang="en">
+  
+  <style>
+    .editLink a {
+    color: #FFFFFF;
+    text-decoration: none;
+    }  
+  </style>
+   
+<script type="text/javascript">
+  function preventBack() {
+      window.history.forward(); 
+  }
+  
+  setTimeout("preventBack()", 0);
+  
+  window.onunload = function () { null };
+</script>
+
+</head>
+
+<body>
+
+{% extends 'base01.html' %}
+{% block work2 %}
+
+<script>
+  function myFunction() {
+    alert("Hello! I am an alert box!");
+  }
+  </script>
+  
+<form  action ="updaterecordusermaitre/{{rec.user}}" method="POST">
+  {% csrf_token  %}
+ <table>
+  <p>تعديل الاستاذ </p>
+  
+  <p> كود الاستاذ  <input type="text" name="user1"  value="{{rec.user}}"></p>
+
+
+  
+  <p>اسم الاستاذ 
+  <input type="text" name="nom" required="True" value="{{rec.name}}"></p>
+
+<p>يعمل او متوقف</p>
+<select type="text" name="pasmd"> 
+  {% if rec.passmd == "oui" %}
+  <option value={{rec.passmd}}>متوقف</option>
+  {% endif %}
+  {% if rec.passmd == "non" %}
+  <option value={{rec.passmd}}>يعمل</option>
+  {% endif %}
+  <option value="oui">متوقف</option>
+<option value="non">يعمل</option>
+  
+           </select> 
+
+
+
+</table>
+ 
+
+<p>  <input type="submit" value="save" ></p>
+
+  <br>
+  </form>
+  <br>
+  <br>
+  <br>
+  <div class='editLink'>
+
+  <td><a href="/app1/naitre1/listeusermaitre1" style="background-color: brown;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">خروج دون تسجيل</a></td>
+  
+  <br>
+<br>
+
+<td><a href="/app1/direct" style="background-color: blue;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">خروج الى اللائحة الاساسية</a></td>
+  </div>
+  
+{% endblock work2 %}
+
+
+</body>
+</html>

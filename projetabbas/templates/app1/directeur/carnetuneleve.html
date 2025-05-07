@@ -1,0 +1,732 @@
+<!DOCTYPE html >
+<html dir="rtl",lang="en">
+  
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>اصدار بطاقة علامة طالب محدد  </title>
+
+  <style>
+
+   .alignement{
+    text-align: center;
+
+   }
+  .editLink a {
+    color: #FFFFFF;
+    text-decoration: none;
+    }  
+    .editLi a {
+      color: #FFFFFF;
+      text-decoration: none;
+      }  
+   #asa{
+        
+    background-color: silver;
+   }
+  label {
+    background-color: silver;
+    color:blue;
+  }      
+  
+
+  @media print { 
+    .nonprint{
+               display:none;
+  }
+  .no{
+    display:none;
+  }
+  .pgbr{
+    clear: both;
+    page-break-after: always;
+  }
+  }
+  
+  tr:nth-child(even) {
+  background-color: rgba(150, 212, 212, 0.4);
+  }
+#ax {text-align: center;
+  font-size: small;
+  }
+
+ a{
+   font-size:smaller;
+      
+}
+  </style>
+   
+<script type="text/javascript">
+  function preventBack() {
+      window.history.forward(); 
+  }
+  
+  setTimeout("preventBack()", 0);
+  
+  window.onunload = function () { null };
+</script>
+
+</head>
+
+<body>
+  
+
+
+{% block work2 %}
+
+<form method="POST"  >
+  {% csrf_token  %}
+     
+   
+  <table class="no" border="1" style="background-color: white";>
+   <td><label> :كود الطالب<input type="text" name="code2030"></label></td>
+    <td> <label> العام الدراسي </label>
+         <select type="text" name="anne2030"> 
+          <option value={{x1}}>{{x1}}</option>
+
+          {% for rec101 in recann %}
+            <option value={{rec101.anne}}>{{rec101.anne}} </option> 
+          {% endfor %}
+         </select> </td>
+    <td style="background-color:yellow";> <input type="submit" value="اصدار العلامة" ><td>
+</table>
+  </form>  
+  
+<br>
+{% load static %}
+
+  
+  <form method="POST" >
+    {% csrf_token  %}
+      
+    {% for rec1 in reco %}
+
+    {% if rec1.code == 1 %}
+     <table border="1" >
+       <td colspan="4" style="background-color:yellow";><img src="{% static 'image/logo1.jpg' %}"   style=" border:2px  solid #4d694e"  width="100" height="50"> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp&nbsp &nbsp &nbsp  &nbsp&nbsp&nbsp&nbsp ثانويــة درة الشرقين <br>&nbsp &nbsp &nbsp&nbsp &nbsp &nbsp &nbsp&nbsp &nbsp&nbsp&nbsp &nbsp &nbsp &nbsp&nbsp &nbsp &nbsp &nbsp &nbsp&nbsp&nbsp &nbsp &nbsp &nbsp&nbsp بطاقة العلامات المدرســـيّة       </td> 
+      
+       <tr >
+        <td>  <a> اسم الطالب: {{rec1.nom1}} {{rec1.pere1}} {{rec1.famille1}}</a></td><td> </td><td><a> الصف: 
+          
+          
+          {% if rec1.classe1 == "eb1" %}  الأول{% endif %}
+          {% if rec1.classe1 == "eb2" %} الثاني {% endif %}
+          {% if rec1.classe1 == "eb3" %} الثالث {% endif %}
+          {% if rec1.classe1 == "eb4" %} الرابع {% endif %}
+          {% if rec1.classe1 == "eb5" %} الخامس {% endif %}
+          {% if rec1.classe1 == "eb6" %} السادس {% endif %}
+          {% if rec1.classe1 == "eb7" %} السابع {% endif %}
+          {% if rec1.classe1 == "eb8" %} الثامن {% endif %}
+          {% if rec1.classe1 == "eb9" %}التاسع  {% endif %}
+          {% if rec1.classe1 == "sec-sc" %} العاشر {% endif %}
+          {% if rec1.classe1 == "bacc1-sc" %} الحادي عشر - علمي {% endif %}
+          {% if rec1.classe1 == "bacc1-l" %} الحادي عشر-أدبي {% endif %}
+          {% if rec1.classe1 == "sg" %} الثاني عشر-علوم عامة {% endif %}
+          {% if rec1.classe1 == "sv" %} الثاني عشر-علوم الحياة {% endif %}
+          {% if rec1.classe1 == "se" %}  الثاني عشر - اقتصاد{% endif %}
+          {% if rec1.classe1 == "LH" %}  الثاني عشر - اداب وانسانيات{% endif %}
+           والشعبة :
+         {% if rec1.section1 == "A" %} &nbsp&nbspأ  &nbsp&nbsp{% endif %}
+        {% if rec1.section1 == "B" %}&nbsp&nbsp ب &nbsp&nbsp {% endif %}
+        {% if rec1.section1 == "C" %} &nbsp&nbspج &nbsp&nbsp {% endif %}
+        {% if rec1.section1 == "D" %} &nbsp&nbspد &nbsp&nbsp {% endif %}
+        {% if rec1.section1 == "E" %} &nbsp&nbspه &nbsp&nbsp {% endif %}
+        {% if rec1.section1 == "F" %} &nbsp&nbspو&nbsp&nbsp {% endif %}
+        {% if rec1.section1 == "G" %} &nbsp&nbspز &nbsp&nbsp {% endif %}
+        {% if rec1.section1 == "H" %} &nbsp&nbspح &nbsp&nbsp {% endif %}
+        {% if rec1.section1 == "I" %} &nbsp&nbspط&nbsp&nbsp {% endif %}
+        {% if rec1.section1 == "J" %} &nbsp&nbspي&nbsp&nbsp {% endif %}
+        
+        
+        
+        
+        
+        </a>
+        </td>
+         <td>              <a>                             العام الدراسي :{{rec1.anne1}}        </a> .                                           </td>   
+        {% endif %}
+    
+
+
+{% endfor %}
+<div class="alignement">
+       {% if parent != "no" %}
+  
+  
+       <table id="ax" border="3" style="background-color: white";>
+    <td style="background-color:yellow" align="center">المادة</td>   <td style="background-color:yellow" align="center">العلامة القصوى</td>
+    {% for rec1 in reco %}
+    
+      {% if  rec1.som1 != 0   and rec1.nombremy > 1  and movs == "yes" %}
+        <td style="background-color:yellow" align="center">{{rec1.mois}}</td>
+      {% endif %}
+      {% if  rec1.som1 != 0   and rec1.nombremy == 1   %}
+        <td style="background-color:yellow" align="center">{{rec1.mois}}</td>
+      {% endif %}
+   
+    {% endfor %}
+    
+    <tr>
+    {% if ascmat != 0 %} {% for m in matiere %}{% if m.nommatiere == "math" %}
+    <td style="background-color:yellow" align="center">{{m.nomforcarnet}}<br>{{m.sousnom1}}<br>{{m.sousnom2}}<br>{{m.sousnom3}}</td> <td style="background-color:yellow" align="center"><a>{{ascmat}}</a></td>
+                         {% endif %}{% endfor %}
+                       
+                         {% for rec1 in reco %}
+                           {% if  rec1.som1 != 0   and rec1.nombremy > 1  and movs == "yes" %}
+                             <td  align="center">{{rec1.math}}</td>
+                           {% endif %}
+                           {% if  rec1.som1 != 0   and rec1.nombremy == 1   %}
+                             <td  align="center">{{rec1.math}}</td>
+                           {% endif %}
+                         {% endfor %}
+    {% endif %}
+    <tr>
+    {% if ascphy != 0 %} {% for m in matiere %}{% if m.nommatiere == "physique" %}
+    <td style="background-color:yellow" align="center">{{m.nomforcarnet}}<br>{{m.sousnom1}}<br>{{m.sousnom2}}<br>{{m.sousnom3}}</td> <td style="background-color:yellow" align="center"><a>{{ascmat}}</a></td>
+                         {% endif %}{% endfor %}
+                       
+                         {% for rec1 in reco %}
+                           {% if  rec1.som1 != 0   and rec1.nombremy > 1  and movs == "yes" %}
+                             <td  align="center">{{rec1.physique}}</td>
+                           {% endif %}
+                           {% if  rec1.som1 != 0   and rec1.nombremy == 1   %}
+                             <td  align="center">{{rec1.physique}}</td>
+                           {% endif %}
+                         {% endfor %}
+    {% endif %}
+    <tr>
+    {% if ascchi != 0 %} {% for m in matiere %}{% if m.nommatiere == "chimie" %}
+    <td style="background-color:yellow" align="center">{{m.nomforcarnet}}<br>{{m.sousnom1}}<br>{{m.sousnom2}}<br>{{m.sousnom3}}</td> <td style="background-color:yellow" align="center"><a>{{ascmat}}</a></td>
+                         {% endif %}{% endfor %}
+                       
+                         {% for rec1 in reco %}
+                           {% if  rec1.som1 != 0   and rec1.nombremy > 1  and movs == "yes" %}
+                             <td  align="center">{{rec1.chimie}}</td>
+                           {% endif %}
+                           {% if  rec1.som1 != 0   and rec1.nombremy == 1   %}
+                             <td  align="center">{{rec1.chimie}}</td>
+                           {% endif %}
+                         {% endfor %}
+    {% endif %}
+    <tr>
+    {% if  ascbio != 0 %} {% for m in matiere %}{% if m.nommatiere == "bio" %}
+    <td style="background-color:yellow" align="center">{{m.nomforcarnet}}<br>{{m.sousnom1}}<br>{{m.sousnom2}}<br>{{m.sousnom3}}</td> <td style="background-color:yellow" align="center"><a>{{ascmat}}</a></td>
+                         {% endif %}{% endfor %}
+                       
+                         {% for rec1 in reco %}
+                           {% if  rec1.som1 != 0   and rec1.nombremy > 1  and movs == "yes" %}
+                             <td  align="center">{{rec1.bio}}</td>
+                           {% endif %}
+                           {% if  rec1.som1 != 0   and rec1.nombremy == 1   %}
+                             <td  align="center">{{rec1.bio}}</td>
+                           {% endif %}
+                         {% endfor %}
+    {% endif %}
+    <tr>
+
+    {% if  ascara1 != 0 %} {% for m in matiere %}{% if m.nommatiere == "arab1" %}
+    <td style="background-color:yellow" align="center">{{m.nomforcarnet}}<br>{{m.sousnom1}}<br>{{m.sousnom2}}<br>{{m.sousnom3}}</td> <td style="background-color:yellow" align="center"><a>{{ascmat}}</a></td>
+                         {% endif %}{% endfor %}
+                       
+                         {% for rec1 in reco %}
+                           {% if  rec1.som1 != 0   and rec1.nombremy > 1  and movs == "yes" %}
+                             <td  align="center">{{rec1.arab1}}</td>
+                           {% endif %}
+                           {% if  rec1.som1 != 0   and rec1.nombremy == 1   %}
+                             <td  align="center">{{rec1.arab1}}</td>
+                           {% endif %}
+                         {% endfor %}
+    {% endif %}
+    <tr>
+    {% if  ascara2 != 0 %}{% for m in matiere %}{% if m.nommatiere == "arab2" %}
+    <td style="background-color:yellow" align="center">{{m.nomforcarnet}}<br>{{m.sousnom1}}<br>{{m.sousnom2}}<br>{{m.sousnom3}}</td> <td style="background-color:yellow" align="center"><a>{{ascmat}}</a></td>
+                         {% endif %}{% endfor %}
+                       
+                         {% for rec1 in reco %}
+                           {% if  rec1.som1 != 0   and rec1.nombremy > 1  and movs == "yes" %}
+                             <td  align="center">{{rec1.arab2}}</td>
+                           {% endif %}
+                           {% if  rec1.som1 != 0   and rec1.nombremy == 1   %}
+                             <td  align="center">{{rec1.arab2}}</td>
+                           {% endif %}
+                         {% endfor %}
+    {% endif %}
+    <tr>
+    {% if  ascara3 != 0 %}
+    {% for m in matiere %}{% if m.nommatiere == "arab3" %}
+    <td style="background-color:yellow" align="center">{{m.nomforcarnet}}<br>{{m.sousnom1}}<br>{{m.sousnom2}}<br>{{m.sousnom3}}</td> <td style="background-color:yellow" align="center"><a>{{ascmat}}</a></td>
+                         {% endif %}{% endfor %}
+                       
+                         {% for rec1 in reco %}
+                           {% if  rec1.som1 != 0   and rec1.nombremy > 1  and movs == "yes" %}
+                             <td  align="center">{{rec1.arab3}}</td>
+                           {% endif %}
+                           {% if  rec1.som1 != 0   and rec1.nombremy == 1   %}
+                             <td  align="center">{{rec1.arab3}}</td>
+                           {% endif %}
+                         {% endfor %}
+    {% endif %}
+    <tr>
+
+    {% if  ascfra1 != 0 %}
+    {% for m in matiere %}{% if m.nommatiere == "francais1" %}
+    <td style="background-color:yellow" align="center">{{m.nomforcarnet}}<br>{{m.sousnom1}}<br>{{m.sousnom2}}<br>{{m.sousnom3}}</td> <td style="background-color:yellow" align="center"><a>{{ascmat}}</a></td>
+                         {% endif %}{% endfor %}
+                       
+                         {% for rec1 in reco %}
+                           {% if  rec1.som1 != 0   and rec1.nombremy > 1  and movs == "yes" %}
+                             <td  align="center">{{rec1.francais1}}</td>
+                           {% endif %}
+                           {% if  rec1.som1 != 0   and rec1.nombremy == 1   %}
+                             <td  align="center">{{rec1.francais1}}</td>
+                           {% endif %}
+                         {% endfor %}
+    {% endif %}
+    <tr>
+    {% if ascfra2 != 0 %}
+    {% for m in matiere %}{% if m.nommatiere == "francais2" %}
+    <td style="background-color:yellow" align="center">{{m.nomforcarnet}}<br>{{m.sousnom1}}<br>{{m.sousnom2}}<br>{{m.sousnom3}}</td> <td style="background-color:yellow" align="center"><a>{{ascmat}}</a></td>
+                         {% endif %}{% endfor %}
+                       
+                         {% for rec1 in reco %}
+                           {% if  rec1.som1 != 0   and rec1.nombremy > 1  and movs == "yes" %}
+                             <td  align="center">{{rec1.francais2}}</td>
+                           {% endif %}
+                           {% if  rec1.som1 != 0   and rec1.nombremy == 1   %}
+                             <td  align="center">{{rec1.francais2}}</td>
+                           {% endif %}
+                         {% endfor %}
+    {% endif %}
+    <tr>
+    {% if ascfra3 != 0 %}
+    {% for m in matiere %}{% if m.nommatiere == "francais3" %}
+    <td style="background-color:yellow" align="center">{{m.nomforcarnet}}<br>{{m.sousnom1}}<br>{{m.sousnom2}}<br>{{m.sousnom3}}</td> <td style="background-color:yellow" align="center"><a>{{ascmat}}</a></td>
+                         {% endif %}{% endfor %}
+                       
+                         {% for rec1 in reco %}
+                           {% if  rec1.som1 != 0   and rec1.nombremy > 1  and movs == "yes" %}
+                             <td  align="center">{{rec1.francais3}}</td>
+                           {% endif %}
+                           {% if  rec1.som1 != 0   and rec1.nombremy == 1   %}
+                             <td  align="center">{{rec1.francais3}}</td>
+                           {% endif %}
+                         {% endfor %}
+    {% endif %}
+    <tr>
+    {% if asceng != 0 %}  {% for m in matiere %}{% if m.nommatiere == "eng" %}
+    <td style="background-color:yellow" align="center">{{m.nomforcarnet}}<br>{{m.sousnom1}}<br>{{m.sousnom2}}<br>{{m.sousnom3}}</td> <td style="background-color:yellow" align="center"><a>{{ascmat}}</a></td>
+                         {% endif %}{% endfor %}
+                       
+                         {% for rec1 in reco %}
+                           {% if  rec1.som1 != 0   and rec1.nombremy > 1  and movs == "yes" %}
+                             <td  align="center">{{rec1.eng}}</td>
+                           {% endif %}
+                           {% if  rec1.som1 != 0   and rec1.nombremy == 1   %}
+                             <td  align="center">{{rec1.eng}}</td>
+                           {% endif %}
+                         {% endfor %}
+    {% endif %}
+    <tr>
+    {% if  ascphi != 0 %}
+        
+      {% for m in matiere %}{% if m.nommatiere == "philosophie" %}
+    <td style="background-color:yellow" align="center">{{m.nomforcarnet}}<br>{{m.sousnom1}}<br>{{m.sousnom2}}<br>{{m.sousnom3}}</td> <td style="background-color:yellow" align="center"><a>{{ascmat}}</a></td>
+                         {% endif %}{% endfor %}
+                       
+                         {% for rec1 in reco %}
+                           {% if  rec1.som1 != 0   and rec1.nombremy > 1  and movs == "yes" %}
+                             <td  align="center">{{rec1.philosophie}}</td>
+                           {% endif %}
+                           {% if  rec1.som1 != 0   and rec1.nombremy == 1   %}
+                             <td  align="center">{{rec1.philosophie}}</td>
+                           {% endif %}
+                         {% endfor %}
+    {% endif %}
+    <tr>
+
+    {% if  asceco != 0 %}
+        
+    {% for m in matiere %}{% if m.nommatiere == "economie" %}
+  <td style="background-color:yellow" align="center">{{m.nomforcarnet}}<br>{{m.sousnom1}}<br>{{m.sousnom2}}<br>{{m.sousnom3}}</td> <td style="background-color:yellow" align="center"><a>{{ascmat}}</a></td>
+                       {% endif %}{% endfor %}
+                     
+                       {% for rec1 in reco %}
+                         {% if  rec1.som1 != 0   and rec1.nombremy > 1  and movs == "yes" %}
+                           <td  align="center">{{rec1.economie}}</td>
+                         {% endif %}
+                         {% if  rec1.som1 != 0   and rec1.nombremy == 1   %}
+                           <td  align="center">{{rec1.economie}}</td>
+                         {% endif %}
+                       {% endfor %}
+  {% endif %}
+  <tr>
+    
+    {% if  ascsoc != 0 %}
+        
+    {% for m in matiere %}{% if m.nommatiere == "socialite" %}
+  <td style="background-color:yellow" align="center">{{m.nomforcarnet}}<br>{{m.sousnom1}}<br>{{m.sousnom2}}<br>{{m.sousnom3}}</td> <td style="background-color:yellow" align="center"><a>{{ascmat}}</a></td>
+                       {% endif %}{% endfor %}
+                     
+                       {% for rec1 in reco %}
+                         {% if  rec1.som1 != 0   and rec1.nombremy > 1  and movs == "yes" %}
+                           <td  align="center">{{rec1.socialtite}}</td>
+                         {% endif %}
+                         {% if  rec1.som1 != 0   and rec1.nombremy == 1   %}
+                           <td  align="center">{{rec1.socialite}}</td>
+                         {% endif %}
+                       {% endfor %}
+  {% endif %}
+  <tr>
+
+  
+    {% if  aschis != 0 %}
+    
+    {% for m in matiere %}{% if m.nommatiere == "historique" %}
+  <td style="background-color:yellow" align="center">{{m.nomforcarnet}}<br>{{m.sousnom1}}<br>{{m.sousnom2}}<br>{{m.sousnom3}}</td> <td style="background-color:yellow" align="center"><a>{{ascmat}}</a></td>
+                       {% endif %}{% endfor %}
+                     
+                       {% for rec1 in reco %}
+                         {% if  rec1.som1 != 0   and rec1.nombremy > 1  and movs == "yes" %}
+                           <td  align="center">{{rec1.historique}}</td>
+                         {% endif %}
+                         {% if  rec1.som1 != 0   and rec1.nombremy == 1   %}
+                           <td  align="center">{{rec1.historique}}</td>
+                         {% endif %}
+                       {% endfor %}
+  {% endif %}<tr>
+  
+    {% if  ascgeo != 0 %}
+    
+    {% for m in matiere %}{% if m.nommatiere == "geographie" %}
+  <td style="background-color:yellow" align="center">{{m.nomforcarnet}}<br>{{m.sousnom1}}<br>{{m.sousnom2}}<br>{{m.sousnom3}}</td> <td style="background-color:yellow" align="center"><a>{{ascmat}}</a></td>
+                       {% endif %}{% endfor %}
+                     
+                       {% for rec1 in reco %}
+                         {% if  rec1.som1 != 0   and rec1.nombremy > 1  and movs == "yes" %}
+                           <td  align="center">{{rec1.geographie}}</td>
+                         {% endif %}
+                         {% if  rec1.som1 != 0   and rec1.nombremy == 1   %}
+                           <td  align="center">{{rec1.geographie}}</td>
+                         {% endif %}
+                       {% endfor %}
+  {% endif %}<tr>
+    
+      {% for m in matiere %}{% if m.nommatiere == "civisme" %}
+      <td style="background-color:yellow" align="center">{{m.nomforcarnet}}<br>{{m.sousnom1}}<br>{{m.sousnom2}}<br>{{m.sousnom3}}</td> <td style="background-color:yellow" align="center"><a>{{ascmat}}</a></td>
+                           {% endif %}{% endfor %}
+                         
+                           {% for rec1 in reco %}
+                             {% if  rec1.som1 != 0   and rec1.nombremy > 1  and movs == "yes" %}
+                               <td  align="center">{{rec1.civisme}}</td>
+                             {% endif %}
+                             {% if  rec1.som1 != 0   and rec1.nombremy == 1   %}
+                               <td  align="center">{{rec1.civisme}}</td>
+                             {% endif %}
+                           {% endfor %}
+      {% endif %}<tr>
+  
+    {% if  ascart != 0 %}
+        
+    {% for m in matiere %}{% if m.nommatiere == "art" %}
+    <td style="background-color:yellow" align="center">{{m.nomforcarnet}}<br>{{m.sousnom1}}<br>{{m.sousnom2}}<br>{{m.sousnom3}}</td> <td style="background-color:yellow" align="center"><a>{{ascmat}}</a></td>
+                         {% endif %}{% endfor %}
+                       
+                         {% for rec1 in reco %}
+                           {% if  rec1.som1 != 0   and rec1.nombremy > 1  and movs == "yes" %}
+                             <td  align="center">{{rec1.art}}</td>
+                           {% endif %}
+                           {% if  rec1.som1 != 0   and rec1.nombremy == 1   %}
+                             <td  align="center">{{rec1.art}}</td>
+                           {% endif %}
+                         {% endfor %}
+    {% endif %}<tr>
+    
+          {% if  ascrel != 0 %}
+          {% for m in matiere %}{% if m.nommatiere == "religieu" %}
+          <td style="background-color:yellow" align="center">{{m.nomforcarnet}}<br>{{m.sousnom1}}<br>{{m.sousnom2}}<br>{{m.sousnom3}}</td> <td style="background-color:yellow" align="center"><a>{{ascmat}}</a></td>
+                               {% endif %}{% endfor %}
+                             
+                               {% for rec1 in reco %}
+                                 {% if  rec1.som1 != 0   and rec1.nombremy > 1  and movs == "yes" %}
+                                   <td  align="center">{{rec1.religieu}}</td>
+                                 {% endif %}
+                                 {% if  rec1.som1 != 0   and rec1.nombremy == 1   %}
+                                   <td  align="center">{{rec1.religieu}}</td>
+                                 {% endif %}
+                               {% endfor %}
+          {% endif %}<tr>
+  
+    {% if  ascinf != 0 %}
+
+    {% for m in matiere %}{% if m.nommatiere == "informatique" %}
+    <td style="background-color:yellow" align="center">{{m.nomforcarnet}}<br>{{m.sousnom1}}<br>{{m.sousnom2}}<br>{{m.sousnom3}}</td> <td style="background-color:yellow" align="center"><a>{{ascmat}}</a></td>
+                         {% endif %}{% endfor %}
+                       
+                         {% for rec1 in reco %}
+                           {% if  rec1.som1 != 0   and rec1.nombremy > 1  and movs == "yes" %}
+                             <td  align="center">{{rec1.informatique}}</td>
+                           {% endif %}
+                           {% if  rec1.som1 != 0   and rec1.nombremy == 1   %}
+                             <td  align="center">{{rec1.informatique}}</td>
+                           {% endif %}
+                         {% endfor %}
+    {% endif %}<tr>
+    
+    {% if  ascspo != 0 %}
+
+    {% for m in matiere %}{% if m.nommatiere == "sport" %}
+    <td style="background-color:yellow" align="center">{{m.nomforcarnet}}<br>{{m.sousnom1}}<br>{{m.sousnom2}}<br>{{m.sousnom3}}</td> <td style="background-color:yellow" align="center"><a>{{ascmat}}</a></td>
+                         {% endif %}{% endfor %}
+                       
+                         {% for rec1 in reco %}
+                           {% if  rec1.som1 != 0   and rec1.nombremy > 1  and movs == "yes" %}
+                             <td  align="center">{{rec1.sport}}</td>
+                           {% endif %}
+                           {% if  rec1.som1 != 0   and rec1.nombremy == 1   %}
+                             <td  align="center">{{rec1.sport}}</td>
+                           {% endif %}
+                         {% endfor %}
+    {% endif %}<tr>
+      
+      
+      {% if  ascm1 != 0 %}
+
+
+      {% for m in matiere %}{% if m.nommatiere == "matiere1" %}
+      <td style="background-color:yellow" align="center">{{m.nomforcarnet}}<br>{{m.sousnom1}}<br>{{m.sousnom2}}<br>{{m.sousnom3}}</td> <td style="background-color:yellow" align="center"><a>{{ascmat}}</a></td>
+                           {% endif %}{% endfor %}
+                         
+                           {% for rec1 in reco %}
+                             {% if  rec1.som1 != 0   and rec1.nombremy > 1  and movs == "yes" %}
+                               <td  align="center">{{rec1.matiere1}}</td>
+                             {% endif %}
+                             {% if  rec1.som1 != 0   and rec1.nombremy == 1   %}
+                               <td  align="center">{{rec1.matiere1}}</td>
+                             {% endif %}
+                           {% endfor %}
+      {% endif %}<tr>
+  
+      
+        {% if  ascm2 != 0 %}
+
+
+        {% for m in matiere %}{% if m.nommatiere == "matiere2" %}
+        <td style="background-color:yellow" align="center">{{m.nomforcarnet}}<br>{{m.sousnom1}}<br>{{m.sousnom2}}<br>{{m.sousnom3}}</td> <td style="background-color:yellow" align="center"><a>{{ascmat}}</a></td>
+                             {% endif %}{% endfor %}
+                           
+                             {% for rec1 in reco %}
+                               {% if  rec1.som1 != 0   and rec1.nombremy > 1  and movs == "yes" %}
+                                 <td  align="center">{{rec1.matiere2}}</td>
+                               {% endif %}
+                               {% if  rec1.som1 != 0   and rec1.nombremy == 1   %}
+                                 <td  align="center">{{rec1.matiere2}}</td>
+                               {% endif %}
+                             {% endfor %}
+        {% endif %}<tr>
+  
+      
+          {% if  ascm3 != 0 %}
+
+
+          {% for m in matiere %}{% if m.nommatiere == "matiere3" %}
+          <td style="background-color:yellow" align="center">{{m.nomforcarnet}}<br>{{m.sousnom1}}<br>{{m.sousnom2}}<br>{{m.sousnom3}}</td> <td style="background-color:yellow" align="center"><a>{{ascmat}}</a></td>
+                               {% endif %}{% endfor %}
+                             
+                               {% for rec1 in reco %}
+                                 {% if  rec1.som1 != 0   and rec1.nombremy > 1  and movs == "yes" %}
+                                   <td  align="center">{{rec1.matiere3}}</td>
+                                 {% endif %}
+                                 {% if  rec1.som1 != 0   and rec1.nombremy == 1   %}
+                                   <td  align="center">{{rec1.matiere3}}</td>
+                                 {% endif %}
+                               {% endfor %}
+          {% endif %}<tr>
+  
+      
+            {% if  ascm4 != 0 %}
+
+
+            {% for m in matiere %}{% if m.nommatiere == "matiere4" %}
+            <td style="background-color:yellow" align="center">{{m.nomforcarnet}}<br>{{m.sousnom1}}<br>{{m.sousnom2}}<br>{{m.sousnom3}}</td> <td style="background-color:yellow" align="center"><a>{{ascmat}}</a></td>
+                                 {% endif %}{% endfor %}
+                               
+                                 {% for rec1 in reco %}
+                                   {% if  rec1.som1 != 0   and rec1.nombremy > 1  and movs == "yes" %}
+                                     <td  align="center">{{rec1.matiere4}}</td>
+                                   {% endif %}
+                                   {% if  rec1.som1 != 0   and rec1.nombremy == 1   %}
+                                     <td  align="center">{{rec1.matiere4}}</td>
+                                   {% endif %}
+                                 {% endfor %}
+            {% endif %}<tr>
+  
+      
+              {% if  ascm5 != 0 %}
+
+
+              {% for m in matiere %}{% if m.nommatiere == "matiere5" %}
+              <td style="background-color:yellow" align="center">{{m.nomforcarnet}}<br>{{m.sousnom1}}<br>{{m.sousnom2}}<br>{{m.sousnom3}}</td> <td style="background-color:yellow" align="center"><a>{{ascmat}}</a></td>
+                                   {% endif %}{% endfor %}
+                                 
+                                   {% for rec1 in reco %}
+                                     {% if  rec1.som1 != 0   and rec1.nombremy > 1  and movs == "yes" %}
+                                       <td  align="center">{{rec1.matiere5}}</td>
+                                     {% endif %}
+                                     {% if  rec1.som1 != 0   and rec1.nombremy == 1   %}
+                                       <td  align="center">{{rec1.matiere5}}</td>
+                                     {% endif %}
+                                   {% endfor %}
+              {% endif %}<tr>
+  
+      
+                {% if  ascm6 != 0 %}
+
+
+                {% for m in matiere %}{% if m.nommatiere == "matiere6" %}
+                <td style="background-color:yellow" align="center">{{m.nomforcarnet}}<br>{{m.sousnom1}}<br>{{m.sousnom2}}<br>{{m.sousnom3}}</td> <td style="background-color:yellow" align="center"><a>{{ascmat}}</a></td>
+                                     {% endif %}{% endfor %}
+                                   
+                                     {% for rec1 in reco %}
+                                       {% if  rec1.som1 != 0   and rec1.nombremy > 1  and movs == "yes" %}
+                                         <td  align="center">{{rec1.matiere6}}</td>
+                                       {% endif %}
+                                       {% if  rec1.som1 != 0   and rec1.nombremy == 1   %}
+                                         <td  align="center">{{rec1.matiere6}}</td>
+                                       {% endif %}
+                                     {% endfor %}
+                {% endif %}<tr>
+  
+      
+                  {% if  ascm7 != 0 %}
+
+
+                  {% for m in matiere %}{% if m.nommatiere == "matiere7" %}
+                  <td style="background-color:yellow" align="center">{{m.nomforcarnet}}<br>{{m.sousnom1}}<br>{{m.sousnom2}}<br>{{m.sousnom3}}</td> <td style="background-color:yellow" align="center"><a>{{ascmat}}</a></td>
+                                       {% endif %}{% endfor %}
+                                     
+                                       {% for rec1 in reco %}
+                                         {% if  rec1.som1 != 0   and rec1.nombremy > 1  and movs == "yes" %}
+                                           <td  align="center">{{rec1.matiere7}}</td>
+                                         {% endif %}
+                                         {% if  rec1.som1 != 0   and rec1.nombremy == 1   %}
+                                           <td  align="center">{{rec1.matiere7}}</td>
+                                         {% endif %}
+                                       {% endfor %}
+                  {% endif %}<tr>
+  
+                                          
+
+    
+    
+    <tr>
+    
+    
+  
+    <td style="background-color:yellow" align="center"> المجموع العام </td>  <td style="background-color:yellow" align="center"><a> {{somt}} </a></td>
+    
+    {% for rec1 in reco %}
+    {% if  rec1.som1 != 0   and rec1.nombremy > 1  and movs == "yes" %}
+      <td  align="center">{{rec1.som1}}</td>
+    {% endif %}
+    {% if  rec1.som1 != 0   and rec1.nombremy == 1   %}
+      <td  align="center">{{rec1.som1}}</td>
+    {% endif %}
+  {% endfor %}
+
+
+
+    <tr>
+    <td style="background-color:yellow" align="center"> المعدل/20 </td><td style="background-color:yellow" align="center"> <a>20</a> </td>
+    
+    {% for rec1 in reco %}
+    {% if  rec1.som2 != 0   and rec1.nombremy > 1  and movs == "yes" %}
+      <td  align="center">{{rec1.som2}}</td>
+    {% endif %}
+    {% if  rec1.som2 != 0   and rec1.nombremy == 1   %}
+      <td  align="center">{{rec1.som2}}</td>
+    {% endif %}
+  {% endfor %}
+
+    <tr>
+  <tr>
+
+    
+
+    <td style="background-color:yellow" align="center" colspan="2"><a> النتيجة </a></td>
+    
+    
+  
+    
+    {% for rec1 in reco %}
+     {% if  rec1.som1 != 0   and rec1.nombremy > 1  and movs == "yes" %}
+        {% if rec1.som2 >= 10 %}
+             <td style="background-color:greenyellow;" align="center"><a> ناجح</a></td>
+        {% endif %}
+        {% if rec1.som2 < 10 %}
+             <td style="background-color:burlywood;" align="center"> <a>راسب</a></td>
+        {% endif %}
+     {% endif %}
+    
+
+    {% if  rec1.som1 != 0   and rec1.nombremy == 1   %}
+       {% if rec1.som2 >= 10 %}
+         <td style="background-color:greenyellow;" align="center"><a> ناجح</a></td>
+       {% endif %}
+        {% if rec1.som2 < 10 %}
+            <td style="background-color:burlywood;" align="center"> <a>راسب</a></td>
+       {% endif %}
+    {% endif %}
+    
+   {% endfor %}
+
+  
+    
+    
+    <tr>
+
+    
+  
+     <td style="background-color:yellow" align="center" colspan="2"><a> الدرجة </a></td>
+  
+    
+     {% for rec1 in reco %}
+     {% if  rec1.som2 != 0   and rec1.nombremy > 1  and movs == "yes" %}
+       <td  align="center">{{rec1.pass1}}</td>
+     {% endif %}
+     {% if  rec1.som2 != 0   and rec1.nombremy == 1   %}
+       <td  align="center">{{rec1.pass1}}</td>
+     {% endif %}
+   {% endfor %}
+ 
+     <tr>
+  <tr>
+
+
+
+
+  
+   </tr>
+    </form>
+    </table>
+  </div>
+<br>
+<br>
+<p>  </p>
+
+<div class='editLink'>
+
+
+<br>
+
+<button class="no" onclick="window.print()"> طباعة  pdf </button>
+<br>
+
+<a  class= "no" href="/" style="background-color: blue;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">خروج الى اللائحة الاساسية</a>
+</div>
+{% endblock work2 %}
+
+
+
+</body>
+</html>  
+  

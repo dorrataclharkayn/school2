@@ -1,0 +1,333 @@
+<!DOCTYPE html >
+<html dir="rtl",lang="en">
+  
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document  </title>
+
+</head>
+
+  <style>
+    .editLink a {
+    color: #FFFFFF;
+    text-decoration: none;
+    }  
+    .editLi a {
+      color: #FFFFFF;
+      text-decoration: none;
+      }  
+  
+ .no{
+    display:none;
+  }
+  
+
+
+  </style>
+   
+
+   <script>
+    var zx =document.getElementById("aa");
+  </script>
+
+
+
+<script type="text/javascript">
+  function preventBack() {
+      window.history.forward(); 
+  }
+  
+  setTimeout("preventBack()", 0);
+  
+  window.onunload = function () { null };
+</script>
+
+
+  
+  {% extends 'base01.html' %}
+
+{% block work2 %}
+<form method="POST">
+  {% csrf_token  %}
+ 
+     <br>
+     <p>يجب ان لا  يكون اي معدل  يدخل فيه شهر بعده من حيث الترتيب بالرقم -كود</p>
+     <p>والا ستكون المعدلات خطأ</p>
+    <br>
+  <p>    العام الدراسي:</p>
+    <select type="text" name="ann1" id="aa"> 
+      <option value={{an}}>{{an}} </option> 
+       {% for rec101 in annn %}
+   <option value={{rec101.anne}}>{{rec101.anne}} </option> 
+  {% endfor %}
+  </select>
+
+  
+
+  <input type="submit" value="ابحث">
+</form>
+  
+  <br>
+  
+<br>
+  
+<table border="1" style="background-color: white";>
+  <td>ID</td>
+  <td>العام</td>
+  <td>اسم الشهر/الفصل</td>
+  <td>كود</td>
+  <td>عدد الاشهر للمعدل</td>
+  <td>كود1</td>
+  <td>كود2</td>
+  <td>كود 3</td>
+  <td> كود 4</td>
+  <td>كود5</td>
+  <td>كود6</td>
+  <td>كود 7</td>
+  <td> كود8</td>
+  <td>كود9 </td>
+  <td>كوذ10</td>
+  <td>كود11</td>
+  <td>كود 12</td>
+  <td>مقفول امام المعلمين</td>
+  
+  {% for rec1 in rec %}
+  <form method="POST"  action ="/app1/eleve1/updmoiscar/{{rec1.id}}/{{rec1.anne}}"> 
+    {% csrf_token  %}
+  
+  <tr>
+    
+    <td align="center">{{rec1.id}}</td>
+    
+
+     <td align="center"><input type="text"   name="an1" maxlength="10"  value={{rec1.anne}} disabled="True" size="8" ></td>
+     <td><textarea name="mois01" rows="1" cols="15"  onchange="this.form.submit()" >{{rec1.mois}} </textarea> </td>
+       <td align="center"><select type="number" name="c"  onchange="this.form.submit()"> 
+      <option value={{rec1.code}}>{{rec1.code}}</option>
+      <option value=0>0 </option> <option value=1>1 </option> <option value=2>2 </option> <option value=3>3 </option> <option value=4>4 </option> 
+      <option value=5>5 </option> <option value=6>6 </option> <option value=7>7 </option> <option value=8>8 </option> 
+      <option value=9>9 </option> <option value=10>10 </option> <option value=11>11 </option> <option value=12>12 </option> 
+    
+      <option value=13>13 </option> <option value=14>14 </option> <option value=15>15 </option> 
+      <option value=16>16 </option> <option value=17>17 </option> <option value=18>18 </option> 
+      
+    </select></td>
+    <td  align="center"><select type="number" name="ny" onchange="this.form.submit()"><option value={{rec1.nombremy}}>{{rec1.nombremy}}</option> 
+        <option value=0>0 </option> <option value=1>1 </option> <option value=2>2 </option> <option value=3>3 </option> <option value=4>4 </option> 
+        <option value=5>5 </option> <option value=6>6 </option> <option value=7>7 </option> <option value=8>8 </option> 
+        <option value=9>9 </option> <option value=10>10 </option> <option value=11>11 </option> <option value=12>12 </option> 
+      
+      
+        <option value=13>13 </option> <option value=14>14 </option> <option value=15>15 </option> 
+        <option value=16>16 </option> <option value=17>17 </option> <option value=18>18 </option> 
+        
+      
+        <`/select></td>
+  
+          
+      
+      
+      <td  align="center"><select type="number" name="c1" onchange="this.form.submit()"> 
+        <option value={{rec1.code1}}>{{rec1.code1}}</option>
+
+        <option value=0>0 </option> <option value=1>1 </option> <option value=2>2 </option> <option value=3>3 </option> <option value=4>4 </option> 
+        <option value=5>5 </option> <option value=6>6 </option> <option value=7>7 </option> <option value=8>8 </option> 
+        <option value=9>9 </option> <option value=10>10 </option> <option value=11>11 </option> <option value=12>12 </option> 
+      
+      
+        <option value=13>13 </option> <option value=14>14 </option> <option value=15>15 </option> 
+        <option value=16>16 </option> <option value=17>17 </option> <option value=18>18 </option> 
+        
+      
+        <`/select></td>
+  
+      <td  align="center"><select type="number" name="c2" onchange="this.form.submit()"> <option value={{rec1.code2}}>{{rec1.code2}}</option>
+
+        <option value=0>0 </option> <option value=1>1 </option> <option value=2>2 </option> <option value=3>3 </option> <option value=4>4 </option> 
+        <option value=5>5 </option> <option value=6>6 </option> <option value=7>7 </option> <option value=8>8 </option> 
+        <option value=9>9 </option> <option value=10>10 </option> <option value=11>11 </option> <option value=12>12 </option> 
+      
+      
+        <option value=13>13 </option> <option value=14>14 </option> <option value=15>15 </option> 
+        <option value=16>16 </option> <option value=17>17 </option> <option value=18>18 </option> 
+        
+      
+      </select></td>
+  
+        <td  align="center"><select type="number" name="c3" onchange="this.form.submit()"> <option value={{rec1.code3}}>{{rec1.code3}}</option>
+
+          <option value=0>0 </option> <option value=1>1 </option> <option value=2>2 </option> <option value=3>3 </option> <option value=4>4 </option> 
+          <option value=5>5 </option> <option value=6>6 </option> <option value=7>7 </option> <option value=8>8 </option> 
+          <option value=9>9 </option> <option value=10>10 </option> <option value=11>11 </option> <option value=12>12 </option> 
+        
+        
+      <option value=13>13 </option> <option value=14>14 </option> <option value=15>15 </option> 
+      <option value=16>16 </option> <option value=17>17 </option> <option value=18>18 </option> 
+      
+        </select></td>
+    
+  
+          <td  align="center"><select type="number" name="c4" onchange="this.form.submit()"> 
+            <option value={{rec1.code4}}>{{rec1.code4}}</option>
+
+            <option value=0>0 </option> <option value=1>1 </option> <option value=2>2 </option> <option value=3>3 </option> <option value=4>4 </option> 
+            <option value=5>5 </option> <option value=6>6 </option> <option value=7>7 </option> <option value=8>8 </option> 
+            <option value=9>9 </option> <option value=10>10 </option> <option value=11>11 </option> <option value=12>12 </option>
+          
+      <option value=13>13 </option> <option value=14>14 </option> <option value=15>15 </option> 
+      <option value=16>16 </option> <option value=17>17 </option> <option value=18>18 </option> 
+      
+          
+          </select></td>
+            <td  align="center"><select type="number" name="c5" onchange="this.form.submit()"> 
+              <option value={{rec1.code5}}>{{rec1.code5}}</option>
+
+              <option value=0>0 </option> <option value=1>1 </option> <option value=2>2 </option> <option value=3>3 </option> <option value=4>4 </option> 
+              <option value=5>5 </option> <option value=6>6 </option> <option value=7>7 </option> <option value=8>8 </option> 
+              <option value=9>9 </option> <option value=10>10 </option> <option value=11>11 </option> <option value=12>12 </option> 
+            
+      <option value=13>13 </option> <option value=14>14 </option> <option value=15>15 </option> 
+      <option value=16>16 </option> <option value=17>17 </option> <option value=18>18 </option> 
+      
+            </select></td>
+        
+  
+
+
+              <td  align="center"><select type="number" name="c6" onchange="this.form.submit()"> 
+                <option value={{rec1.code6}}>{{rec1.code6}}</option>
+
+                <option value=0>0 </option> <option value=1>1 </option> <option value=2>2 </option> <option value=3>3 </option> <option value=4>4 </option> 
+                <option value=5>5 </option> <option value=6>6 </option> <option value=7>7 </option> <option value=8>8 </option> 
+                <option value=9>9 </option> <option value=10>10 </option> <option value=11>11 </option> <option value=12>12 </option> 
+              
+              
+      <option value=13>13 </option> <option value=14>14 </option> <option value=15>15 </option> 
+      <option value=16>16 </option> <option value=17>17 </option> <option value=18>18 </option> 
+      
+              
+              </select></td>
+          
+
+                <td  align="center"><select type="number" name="c7" onchange="this.form.submit()"> 
+                  <option value={{rec1.code7}}>{{rec1.code7}}</option>
+
+                  <option value=0>0 </option> <option value=1>1 </option> <option value=2>2 </option> <option value=3>3 </option> <option value=4>4 </option> 
+                  <option value=5>5 </option> <option value=6>6 </option> <option value=7>7 </option> <option value=8>8 </option> 
+                  <option value=9>9 </option> <option value=10>10 </option> <option value=11>11 </option> <option value=12>12 </option>
+                
+                
+      <option value=13>13 </option> <option value=14>14 </option> <option value=15>15 </option> 
+      <option value=16>16 </option> <option value=17>17 </option> <option value=18>18 </option> 
+      
+                
+                
+                </select></td>
+            
+
+                  <td  align="center"><select type="number" name="c8" onchange="this.form.submit()"><option value={{rec1.code8}}>{{rec1.code8}}</option>
+ 
+                    <option value=0>0 </option> <option value=1>1 </option> <option value=2>2 </option> <option value=3>3 </option> <option value=4>4 </option> 
+                    <option value=5>5 </option> <option value=6>6 </option> <option value=7>7 </option> <option value=8>8 </option> 
+                    <option value=9>9 </option> <option value=10>10 </option> <option value=11>11 </option> <option value=12>12 </option> 
+                  
+                  
+      <option value=13>13 </option> <option value=14>14 </option> <option value=15>15 </option> 
+      <option value=16>16 </option> <option value=17>17 </option> <option value=18>18 </option> 
+      
+                  
+                  </select></td>
+              
+
+                    <td  align="center"><select type="number" name="c9" onchange="this.form.submit()"><option value={{rec1.code9}}>{{rec1.code9}}</option>
+ 
+                      <option value=0>0 </option> <option value=1>1 </option> <option value=2>2 </option> <option value=3>3 </option> <option value=4>4 </option> 
+                      <option value=5>5 </option> <option value=6>6 </option> <option value=7>7 </option> <option value=8>8 </option> 
+                      <option value=9>9 </option> <option value=10>10 </option> <option value=11>11 </option> <option value=12>12 </option>
+                    
+                    
+                    
+      <option value=13>13 </option> <option value=14>14 </option> <option value=15>15 </option> 
+      <option value=16>16 </option> <option value=17>17 </option> <option value=18>18 </option> 
+      
+                    </select></td>
+                
+
+                      <td  align="center"><select type="number" name="c10" onchange="this.form.submit()"><option value={{rec1.code10}}>{{rec1.code10}}</option>
+ 
+                        <option value=0>0 </option> <option value=1>1 </option> <option value=2>2 </option> <option value=3>3 </option> <option value=4>4 </option> 
+                        <option value=5>5 </option> <option value=6>6 </option> <option value=7>7 </option> <option value=8>8 </option> 
+                        <option value=9>9 </option> <option value=10>10 </option> <option value=11>11 </option> <option value=12>12 </option> 
+                      
+                      
+                      
+      <option value=13>13 </option> <option value=14>14 </option> <option value=15>15 </option> 
+      <option value=16>16 </option> <option value=17>17 </option> <option value=18>18 </option> 
+      
+                      </select></td>
+                        <td  align="center"><select type="number" name="c11" onchange="this.form.submit()"><option value={{rec1.code11}}>{{rec1.code11}}</option>
+ 
+                          <option value=0>0 </option> <option value=1>1 </option> <option value=2>2 </option> <option value=3>3 </option> <option value=4>4 </option> 
+                          <option value=5>5 </option> <option value=6>6 </option> <option value=7>7 </option> <option value=8>8 </option> 
+                          <option value=9>9 </option> <option value=10>10 </option> <option value=11>11 </option> <option value=12>12 </option> 
+                        
+      <option value=13>13 </option> <option value=14>14 </option> <option value=15>15 </option> 
+      <option value=16>16 </option> <option value=17>17 </option> <option value=18>18 </option> 
+      
+                        </select></td>
+                          <td  align="center"><select type="number" name="c12" onchange="this.form.submit()"> <option value={{rec1.code12}}>{{rec1.code12}}</option>
+
+                            <option value=0>0 </option> <option value=1>1 </option> <option value=2>2 </option> <option value=3>3 </option> <option value=4>4 </option> 
+                            <option value=5>5 </option> <option value=6>6 </option> <option value=7>7 </option> <option value=8>8 </option> 
+                            <option value=9>9 </option> <option value=10>10 </option> <option value=11>11 </option> <option value=12>12 </option> 
+                          
+                          
+      <option value=13>13 </option> <option value=14>14 </option> <option value=15>15 </option> 
+      <option value=16>16 </option> <option value=17>17 </option> <option value=18>18 </option> 
+      
+                          
+                          </select></td>
+                     {% if rec1.rem1 == "oui" %} 
+                   <td style="background-color:red">مقفل امام المعلمين</td>   </td> {% endif %} 
+                   {% if rec1.rem1 == "non" %} 
+                   <td style="background-color: green">مفتوح للمعلمين   </td> {% endif %}  
+                   
+  
+                            <td><input type="submit" value="حفظ">
+  
+  
+      <td><a href="/app1/eleve1/delelmoiscar/{{rec1.id}}/{{rec1.anne}}" style="background-color:white;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">حذف الشهر</a></td>  
+    <td><a href="/app1/eleve1/addmoiscarnet/{{rec1.anne}}" style="background-color:lightcoral;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">شهرجديد </a>
+      </td>
+
+
+</td></form>
+      {% endfor %}  
+</table>
+
+<br>
+<br>
+<p>  </p>
+<div class='editLink'>
+
+  
+
+<p>
+  p>
+<br>
+<td><a href="/app1/eleve1/addmoiscarnetun " style="background-color:lightcoral;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">شهرجديد </a>
+
+<br>
+
+<td><a href="/app1/direct" style="background-color: lightblue;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">خروج الى اللائحة الاساسية</a></td>
+<button  onclick="window.print()"> طباعة  pdf </button>
+  
+</div>
+{% endblock work2 %}
+
+
+
+
+</html>  
+  
