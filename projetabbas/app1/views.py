@@ -481,32 +481,37 @@ def listeleve (request):
     
   x001=request.POST.get('nom1')
   print(x001)
-  
+  ####
+  comp=student101.objects.filter(quit="مسجل")
+  nombre=len(comp)
+ 
+
+
   ff=student101.objects.filter(nom="x")
-  sss={'rec': ff,'annn' : anw}
+  sss={'nombre':nombre,'rec': ff,'annn' : anw}
   if xann!=None:
-    sss={'rec': ff,'annn' : anw,'getcs': getclasec}
+    sss={'nombre':nombre,'rec': ff,'annn' : anw,'getcs': getclasec}
 
   if x001!=None and x001 !="":
    ff= student101.objects.all()
-   sss={'rec': ff.filter(nom__contains=x001),'annn' : anw}
+   sss={'nombre':nombre,'rec': ff.filter(nom__contains=x001),'annn' : anw}
    if xann!=None:
-    sss={'rec': ff.filter(nom__contains=x001),'annn' : anw,'getcs': getclasec}
+    sss={'nombre':nombre,'rec': ff.filter(nom__contains=x001),'annn' : anw,'getcs': getclasec}
     
 
     
   if x001=="?":
-   sss={'rec': ff,'annn' : anw}
+   sss={'nombre':nombre,'rec': ff,'annn' : anw}
    if xann!=None:
-    sss={'rec': ff,'annn' : anw,'getcs': getclasec}
+    sss={'nombre':nombre,'rec': ff,'annn' : anw,'getcs': getclasec}
 
   if x001=="":
     fff=student101.objects.filter(code="x")
-    sss={'rec': ff,'annn' : anw}
+    sss={'nombre':nombre,'rec': ff,'annn' : anw}
   print("oui")
   if x001==None:
     fff=student101.objects.filter(code="x")
-    sss={'rec': ff,'annn' : anw}
+    sss={'nombre':nombre,'rec': ff,'annn' : anw}
   
   return render(request,'app1/directeur/listeleve.html',sss)
 
